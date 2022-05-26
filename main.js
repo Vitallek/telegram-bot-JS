@@ -217,11 +217,38 @@ bot.hears(['Привет','привет'], async(ctx) =>{
         disable_notification: 'true',
     })
 })
-bot.hears(['Харош','харош','Харош?'], async(ctx) =>{
-    //console.log(ctx.from)
-    await bot.telegram.sendSticker(ctx.message.chat.id, 'CAACAgIAAxkBAAICnGJHL-CjIvlvIbDuTwgpyrO7vxFDAAKiDwACIVD4SF2L5ep3b5-EIwQ', {
-        disable_notification: 'true',
-    })
+bot.command(['/drawdick'], async(ctx) =>{
+    try {
+        if(ctx.from.id === 404598770 || ctx.from.id === 385013825 ||
+            ctx.from.id === 494490664 ){
+
+            let length = ctx.update.message.text.split(' ')[1]
+            if (typeof length === 'undefined') length = 0
+            if (length > 10) length = 10
+
+            await bot.telegram.sendSticker(ctx.message.chat.id, 'CAACAgIAAxkBAAIQN2J9-WZ5o0rI8eyb-vfCSflkCLwUAAJaAAO5G1kLV8yGBhBMCM8kBA', {
+                disable_notification: 'true',
+            })
+
+            for (let i = 0; i < length; i++) {
+                await bot.telegram.sendSticker(ctx.message.chat.id, 'CAACAgIAAxkBAAIQLmJ99y3aS7ooTwoBn7Ga813805CxAAJ1AAO5G1kLCvMs4HWo5VkkBA', {
+                    disable_notification: 'true',
+                })
+            }
+
+            await bot.telegram.sendSticker(ctx.message.chat.id, 'CAACAgIAAxkBAAIQMGJ99zD_HK0DQ97B2J3dARjTQc_9AAJbAAO5G1kLwdpolC2ac-QkBA', {
+                disable_notification: 'true',
+            })
+
+        } else {
+            await bot.telegram.sendMessage(ctx.message.chat.id, `Ваша роль должна быть *Главный читер* или выше, чтобы использовать эту команду`, {
+                parse_mode: 'Markdown',
+                disable_notification: 'true',
+            })
+        }
+    } catch (error){
+        console.log(error)
+    }
 })
 
 bot.command(['/vloc', '/vlocation'], async (ctx) => {
